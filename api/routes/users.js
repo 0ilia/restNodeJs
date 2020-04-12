@@ -39,6 +39,21 @@ router.post('/', (req, res, next) => {
                     const user = [req.body.login, req.body.email, req.body.password, req.body.cookie];
                     const sql = "INSERT INTO users(login, email,password,cookie) VALUES(?,?,?,?)";
                     // res.send(req.body.login);
+                    /*
+var q = db.query("SELECT * FROM someTable");
+var count = 0;
+
+q.on("end", done);
+q.on("error", function (err) {console.error(err.stack || err);});
+
+q.on("result", function (row) {
+    console.log("row:", ++count, row.id);
+    db.pause()
+
+    setTimeout(function () {
+        db.resume();
+    }, 1000);
+});*/
                     mysql.query(sql, user, function (err, results) {
                         if (!err) {
 //                            console.log("Данные добавлены");
@@ -49,16 +64,15 @@ router.post('/', (req, res, next) => {
                             });
 
                         } else {
-                           // console.log(err.sqlMessage);
+                            // console.log(err.sqlMessage);
                             //res.json({  messageError: err.sqlMessage.toString(),});
                             res.status(200).json({
-                              //  messageError: err.sqlMessage,
+                                //  messageError: err.sqlMessage,
                                 messageError: "Логин уже существует",
                                 register: false,
                             });
                         }
                     });
-
 
 
                 } else {
@@ -89,5 +103,6 @@ router.post('/', (req, res, next) => {
 
 
 });
+
 
 module.exports = router;

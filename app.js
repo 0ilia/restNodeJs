@@ -25,6 +25,7 @@ app.use((req,res,next)=>{
 
 
 //My Routes
+//Add user
 app.use('/users',usersRoutes);
 
 
