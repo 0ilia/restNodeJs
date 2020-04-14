@@ -37,23 +37,8 @@ router.post('/', (req, res, next) => {
                 if (req.body.password === req.body.confirmPassword) {
 
                     const user = [req.body.login, req.body.email, req.body.password, req.body.cookie];
-                    const sql = "INSERT INTO users(login, email,password,cookie) VALUES(?,?,?,?)";
-                    // res.send(req.body.login);
-                    /*
-var q = db.query("SELECT * FROM someTable");
-var count = 0;
+                    const sql = "INSERT INTO add_user_view(login, email,password,cookie) VALUES(?,?,?,?);";
 
-q.on("end", done);
-q.on("error", function (err) {console.error(err.stack || err);});
-
-q.on("result", function (row) {
-    console.log("row:", ++count, row.id);
-    db.pause()
-
-    setTimeout(function () {
-        db.resume();
-    }, 1000);
-});*/
                     mysql.query(sql, user, function (err, results) {
                         if (!err) {
 //                            console.log("Данные добавлены");
