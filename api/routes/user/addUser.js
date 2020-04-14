@@ -1,34 +1,13 @@
 const express = require('express');
 
-const mysql = require('../../config/Database.js');
-
+const mysql = require('../../../config/Database.js');
+const bcrypt = require('bcrypt');
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    mysql.query('Select * from users', (err, rows, fields) => {
-
-        if (!err) {
-            console.log(rows);
-        }
-    });
-
-    res.status(200).json({
-        name: "Ilya"
-    });
-
-
-});
-
-router.get('/:id', (req, res, next) => {
-    res.status(200).json({
-        name: req.params.id
-    });
-
-
-});
 
 //add User
 router.post('/', (req, res, next) => {
+
 
     if (req.body.login.length > 3) {
         let email = req.body.email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
@@ -36,7 +15,11 @@ router.post('/', (req, res, next) => {
             if (req.body.password.length > 4) {
                 if (req.body.password === req.body.confirmPassword) {
 
-                    const user = [req.body.login, req.body.email, req.body.password, req.body.cookie];
+                    bcrypt.hash(req.body.password, 10, function(err, hash) {
+                        passHash = hash;
+                    });
+
+                    const user = [req.body.login, req.body.email, passHash, req.body.cookie];
                     const sql = "INSERT INTO add_user_view(login, email,password,cookie) VALUES(?,?,?,?);";
 
                     mysql.query(sql, user, function (err, results) {

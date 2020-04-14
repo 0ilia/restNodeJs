@@ -2,11 +2,12 @@ const express = require('express');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
 
+const bcrypt = require('bcrypt');
+
 const app = express();
 
 app.use(morgan("dev")); //Показывает логи выполнения запроса
 
-const usersRoutes = require('./api/routes/users');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -26,7 +27,8 @@ app.use((req,res,next)=>{
 
 //My Routes
 //Add user
-app.use('/users',usersRoutes);
+app.use('/addUser',require('./api/routes/user/addUser'));
+app.use('/loginUser',require('./api/routes/user/loginUser'));
 
 
 
