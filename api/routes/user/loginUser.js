@@ -13,7 +13,7 @@ router.post('/', (req, res, next) => {
     const sql = "SELECT login  from add_user_view where  login = "+req.body.login+";";*/
 
 
-    mysql.query("SELECT count(*),password FROM add_user_view where login = '"+req.body.login+"';", function (err, result, fields) {
+    mysql.query("SELECT count(*)  password FROM add_user_view where login = '"+req.body.login+"';", function (err, result, fields) {
         if (err) {
             throw err;
         }
