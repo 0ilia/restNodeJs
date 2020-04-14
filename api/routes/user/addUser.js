@@ -16,7 +16,12 @@ router.post('/', (req, res, next) => {
                 if (req.body.password === req.body.confirmPassword) {
 
                     bcrypt.hash(req.body.password, 10, function(err, hash) {
-                        passHash = hash;
+                        if(!err){
+                            passHash = hash;
+
+                        }else {
+                           console.log("Ошибка хеширования");
+                        }
                     });
 
                     const user = [req.body.login, req.body.email, passHash, req.body.cookie];
