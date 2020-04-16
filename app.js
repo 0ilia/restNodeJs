@@ -34,6 +34,15 @@ app.use('/addNote',require('./api/routes/note/addNote'));
 
 
 
+//Тестовый запрос , чтобы небыло ошидания соединени http://test:60/test.html
+app.use('/',(req, res, next) => {
+    res.json({
+            message: "error.message"
+    });
+});
+
+
+
 //Errors
 app.use((req, res, next) => {
     const error = new Error("Not found");
