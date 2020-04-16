@@ -3,5 +3,17 @@ CREATE TABLE IF NOT EXISTS users (login  VARCHAR(15) PRIMARY KEY,
  password VARCHAR(60) NOT NULL ,
   cookie VARCHAR(13) NOT NULL);
 
+
+CREATE TABLE IF NOT EXISTS notes
+(
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ login  VARCHAR(15) NOT NULL,
+ theme  VARCHAR(20) NOT NULL,
+ message VARCHAR(250) NOT NULL,
+ FOREIGN KEY (login)  REFERENCES users (login)
+);
+
+
 CREATE VIEW add_user_view AS SELECT * FROM users;
+CREATE VIEW add_note_view AS SELECT * FROM notes;
 

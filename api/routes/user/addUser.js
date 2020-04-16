@@ -22,7 +22,7 @@ router.post('/', (req, res, next) => {
                         }else {
                            console.log("Ошибка хеширования");
                         }
-                    });
+                    }); 
 
                     const user = [req.body.login, req.body.email, passHash, req.body.cookie];
                     const sql = "INSERT INTO add_user_view(login, email,password,cookie) VALUES(?,?,?,?);";

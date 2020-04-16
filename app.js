@@ -29,6 +29,9 @@ app.use((req,res,next)=>{
 app.use('/addUser',require('./api/routes/user/addUser'));
 app.use('/loginUser',require('./api/routes/user/loginUser'));
 
+app.use('/getAllNotes',require('./api/routes/note/getAllNotes'));
+app.use('/addNote',require('./api/routes/note/addNote'));
+
 
 
 //Errors
