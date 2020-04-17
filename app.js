@@ -1,15 +1,28 @@
 const express = require('express');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
+var expressWs = require('express-ws');
+ expressWs = expressWs(express());
+
+app = expressWs.app;
+ //app = express();
+
+app.ws('/', function(ws, req) {
+    ws.on('message', function(msg) {
+        console.log(msg);
+    });
+    console.log('socket', req.testing);
+});
 
 
-const app = express();
 
 app.use(morgan("dev")); //Показывает логи выполнения запроса
 
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
+
 
 app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Origin", "*");
@@ -22,6 +35,9 @@ app.use((req,res,next)=>{
 
     next();
 });
+
+
+
 
 
 //My Routes

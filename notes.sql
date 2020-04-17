@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS notes
 (
  id INT PRIMARY KEY AUTO_INCREMENT,
  login  VARCHAR(15) NOT NULL,
- theme  VARCHAR(20) NOT NULL,
- message VARCHAR(250) NOT NULL,
+ theme  VARCHAR(20),
+ message VARCHAR(250) ,
  FOREIGN KEY (login)  REFERENCES users (login)
 );
 

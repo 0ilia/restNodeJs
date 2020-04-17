@@ -16,10 +16,12 @@ router.post('/', (req, res, next) => {
 
     mysql.query(sql, user, function (err, results) {
         if (!err) {
-//                            console.log("Данные добавлены");
+                           console.log();
 
             res.status(200).json({
                 message: "Заметка добавленна",
+                id: results["insertId"],
+
             });
 
         } else {
