@@ -1,18 +1,8 @@
 const express = require('express');
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
-var expressWs = require('express-ws');
- expressWs = expressWs(express());
+const app = express();
 
-app = expressWs.app;
- //app = express();
-
-app.ws('/', function(ws, req) {
-    ws.on('message', function(msg) {
-        console.log(msg);
-    });
-    console.log('socket', req.testing);
-});
 
 
 
