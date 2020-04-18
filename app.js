@@ -37,6 +37,7 @@ app.use('/loginUser',require('./api/routes/user/loginUser'));
 app.use('/getAllNotes',require('./api/routes/note/getAllNotes'));
 app.use('/addNote',require('./api/routes/note/addNote'));
 app.use('/updateNote',require('./api/routes/note/updateNote'));
+app.use('/deleteNote',require('./api/routes/note/deleteNote'));
 
 //Тестовый запрос , чтобы небыло ошидания соединени (из-зи ожидания) http://test:60/test.html
 app.use('/test',require('./api/routes/test'));
