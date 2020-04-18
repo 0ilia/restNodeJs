@@ -31,12 +31,12 @@ app.use((req,res,next)=>{
 
 
 //My Routes
-//Add user
 app.use('/addUser',require('./api/routes/user/addUser'));
 app.use('/loginUser',require('./api/routes/user/loginUser'));
 
 app.use('/getAllNotes',require('./api/routes/note/getAllNotes'));
 app.use('/addNote',require('./api/routes/note/addNote'));
+app.use('/updateNote',require('./api/routes/note/updateNote'));
 
 //Тестовый запрос , чтобы небыло ошидания соединени (из-зи ожидания) http://test:60/test.html
 app.use('/test',require('./api/routes/test'));
