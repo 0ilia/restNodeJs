@@ -8,7 +8,6 @@ const router = express.Router();
 //add User
 router.post('/', (req, res, next) => {
 
-
     if (req.body.login.length > 3) {
         let email = req.body.email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
         if (email) {

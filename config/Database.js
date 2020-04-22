@@ -13,14 +13,16 @@ let connection = mysql.createPool({
 
 console.log("connect User");
 module.exports = connection;*/
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize("notes", "root", "", {
-    dialect: "mysql",
+const config = {
+    username: "root",
+    password: "",
+    database: "notes",
     host: "localhost",
-    define: {
-        timestamps: false
-    }
-});
+    dialect: "mysql" // Other options are postgres, sqlite, mariadb and mssql.
+};
+
+const Sequelize = require("sequelize");
+module.exports = new  Sequelize(config);
 
 const User = sequelize.define("user", {
     login: {
@@ -70,8 +72,7 @@ const Notes = sequelize.define("notes", {
 });
 User.hasMany(Notes, {foreignKey: 'login'});
 
-sequelize.sync().then(result => console.log("result"))
-    .catch(err => console.log(err));
+sequelize.sync().then(result => console.log("result")).catch(err => console.log(err));
 
 /*User.create({
     name: "Tom",
