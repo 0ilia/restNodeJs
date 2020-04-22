@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const app = express();
 
 
-
-
 app.use(morgan("dev")); //Показывает логи выполнения запроса
 
 
@@ -22,7 +20,6 @@ app.use((req,res,next)=>{
     );
     res.header('Access-Control-Allow-Methods', '*');
     res.header('Content-Type', 'application/json');
-
     next();
 });
 
@@ -38,6 +35,7 @@ app.use('/getAllNotes',require('./api/routes/note/getAllNotes'));
 app.use('/addNote',require('./api/routes/note/addNote'));
 app.use('/updateNote',require('./api/routes/note/updateNote'));
 app.use('/deleteNote',require('./api/routes/note/deleteNote'));
+app.use('/sortByDateCreate',require('./api/routes/note/sortByDateCreate'));
 
 //Тестовый запрос , чтобы небыло ошидания соединени (из-зи ожидания) http://test:60/test.html
 

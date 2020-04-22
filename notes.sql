@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS notes
  login  VARCHAR(15) NOT NULL,
  theme  VARCHAR(20),
  message VARCHAR(250) ,
+ dateCreate VARCHAR(14) NOT NULL,
+ dateUpdate VARCHAR(14) NOT NULL,
  FOREIGN KEY (login)  REFERENCES users (login)
 );
 

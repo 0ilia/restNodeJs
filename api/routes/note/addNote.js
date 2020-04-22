@@ -9,11 +9,9 @@ const router = express.Router();
 
 
 router.post('/', (req, res, next) => {
-
-
-
-    const user = [req.body.login, req.body.theme, req.body.message];
-    const sql = "INSERT INTO add_note_view(login, theme,message) VALUES(?,?,?);";
+    let timeNow = Date.now();
+    const user = [req.body.login, req.body.theme, req.body.message,timeNow,timeNow];
+    const sql = "INSERT INTO add_note_view(login, theme,message,dateCreate,dateUpdate) VALUES(?,?,?,?,?);";
 
     mysql.query(sql, user, function (err, results) {
         if (!err) {

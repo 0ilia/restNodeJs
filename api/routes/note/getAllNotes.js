@@ -9,7 +9,7 @@ router.get('/:login', (req, res, next) => {
 
 
 
-    mysql.query("SELECT id, theme, message  FROM add_note_view where login = '" + req.params.login + "'", function (err, result, fields) {
+    mysql.query("SELECT id, theme, message FROM add_note_view where login = '" + req.params.login + "' ORDER BY dateCreate DESC", function (err, result, fields) {
       if(!err){
           res.status(200).json({
               //  messageError: err.sqlMessage ,
