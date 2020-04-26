@@ -35,10 +35,8 @@ app.use('/getAllNotes',require('./api/routes/note/getAllNotes'));
 app.use('/addNote',require('./api/routes/note/addNote'));
 app.use('/updateNote',require('./api/routes/note/updateNote'));
 app.use('/deleteNote',require('./api/routes/note/deleteNote'));
-app.use('/sortByDateCreate',require('./api/routes/note/sortByDateCreate'));
 app.use('/sortByDateUpdate',require('./api/routes/note/sortByDateUpdate'));
 
-//Тестовый запрос , чтобы небыло ошидания соединени (из-зи ожидания) http://test:60/test.html
 
 
 

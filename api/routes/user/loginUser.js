@@ -12,12 +12,12 @@ router.post('/', (req, res, next) => {
     const sql = "SELECT login  from add_user_view where  login = "+req.body.login+";";*/
 
 
-    mysql.query("SELECT count(*) , password  FROM add_user_view where login = '" + req.body.login + "'", function (err, result, fields) {
+    mysql.query("SELECT count(*) , password,login  FROM add_user_view where login = '" + req.body.login + "'", function (err, result, fields) {
         if (err) {
             throw err;
         }
         console.log(result);
-        if (result[0]['count(*)'] === 1) {
+        if (result[0]['count(*)'] === 1&&result[0]['login']===req.body.login) {
             bcrypt.compare(req.body.password, result[0]['password']).then(function (result) {
 
                 if (result) {
